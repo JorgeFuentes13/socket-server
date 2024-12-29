@@ -29,6 +29,7 @@ export default class Server {
     }
 
 
+
     private escucharSockets(){
         console.log('Escuchando conexiones - sockets')
 
@@ -37,12 +38,20 @@ export default class Server {
             //Conectar cliente
             socket.conectarCliente( cliente );
 
-            socket.configurarUsuario(cliente,this.io)
+            //Configurar usuario
+            socket.configurarUsuario(cliente,this.io);
+
+            //Obtener usuarios activos
+            socket.ObtenerUsuarios(cliente,this.io);
             
             // console.log('Cliente conectado');
             
-            socket.desconectar( cliente );
+            //Mensajes
             socket.mensaje(cliente, this.io );
+
+            // Desconectar
+            socket.desconectar( cliente, this.io );
+ 
   
         })
         
