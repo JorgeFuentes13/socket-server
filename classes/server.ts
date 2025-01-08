@@ -28,8 +28,6 @@ export default class Server {
         return this._intance || ( this._intance = new this() )
     }
 
-
-
     private escucharSockets(){
         console.log('Escuchando conexiones - sockets')
 
@@ -51,8 +49,6 @@ export default class Server {
 
             // Desconectar
             socket.desconectar( cliente, this.io );
- 
-  
         })
         
     }

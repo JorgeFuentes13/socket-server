@@ -13,8 +13,6 @@ router.get('/mensajes', ( req: Request, res: Response ) => {
         mensaje: 'Todo esttá bien!!'
     })
 
-
-
 });
 
 
@@ -23,21 +21,17 @@ router.post('/mensajes', ( req: Request, res: Response ) => {
     const cuerpo = req.body.cuerpo;
     const de     = req.body.de;
 
-    const payload = {
+    const datos = {
         cuerpo,
-        de
     }
 
-
     const server = Server.instance
-    server.io.emit('mensaje-nuevo',payload);
+    server.io.emit('newLocation',datos);
 
     res.json({
         ok: true,
         cuerpo,
-        de,
     })
-
 });
 
 router.post('/mensajes/:id', ( req: Request, res: Response ) => {
